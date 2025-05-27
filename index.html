@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kuiz Matematik</title>
+  <title>Kuiz Algebra Tingkatan 4</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-blue-50 flex items-center justify-center min-h-screen">
+<body class="bg-green-50 flex items-center justify-center min-h-screen">
   <div class="bg-white shadow-xl rounded-xl p-6 w-full max-w-md">
-    <h1 class="text-xl font-bold mb-4 text-center">Kuiz Matematik</h1>
+    <h1 class="text-xl font-bold mb-4 text-center">Kuiz Algebra Tingkatan 4</h1>
     <div id="quiz-container">
       <p id="question" class="text-lg font-medium mb-4"></p>
       <div id="choices" class="space-y-2"></div>
-      <button id="next-btn" class="mt-6 w-full bg-blue-500 text-white py-2 px-4 rounded hidden">Soalan Seterusnya</button>
+      <button id="next-btn" class="mt-6 w-full bg-green-500 text-white py-2 px-4 rounded hidden">Soalan Seterusnya</button>
     </div>
     <div id="result" class="hidden text-center">
       <h2 class="text-2xl font-bold mb-4">Selesai!</h2>
@@ -23,54 +23,54 @@
   <script>
     const questions = [
       {
-        question: "1. 12 + 7 = ?",
-        choices: ["17", "18", "19", "20"],
-        answer: "19"
+        question: "1. Nyatakan hasil tambah bagi 3x + 2 dan 5x - 4.",
+        choices: ["8x - 2", "2x - 6", "15x", "-2x + 6"],
+        answer: "8x - 2"
       },
       {
-        question: "2. 45 - 18 = ?",
-        choices: ["28", "27", "26", "25"],
-        answer: "27"
+        question: "2. Faktorkan ungkapan: x² - 9.",
+        choices: ["(x + 3)(x - 3)", "(x - 9)(x + 1)", "x(x - 9)", "(x + 9)(x - 1)"],
+        answer: "(x + 3)(x - 3)"
       },
       {
-        question: "3. 6 x 7 = ?",
-        choices: ["42", "36", "48", "40"],
-        answer: "42"
+        question: "3. Selesaikan persamaan: 2x - 5 = 7.",
+        choices: ["x = 1", "x = 6", "x = -1", "x = 5"],
+        answer: "x = 6"
       },
       {
-        question: "4. 56 ÷ 8 = ?",
-        choices: ["6", "7", "8", "9"],
-        answer: "7"
+        question: "4. Selesaikan: x² + 5x + 6 = 0.",
+        choices: ["x = -2 atau x = -3", "x = 2 atau x = 3", "x = -1 atau x = 6", "x = -6 atau x = 1"],
+        answer: "x = -2 atau x = -3"
       },
       {
-        question: "5. 25 + 36 = ?",
-        choices: ["61", "60", "62", "63"],
-        answer: "61"
+        question: "5. Jika f(x) = 2x + 3, cari f(4).",
+        choices: ["11", "12", "10", "13"],
+        answer: "11"
       },
       {
-        question: "6. 100 - 37 = ?",
-        choices: ["63", "64", "65", "66"],
-        answer: "63"
+        question: "6. Kembangkan dan permudahkan: (x + 2)(x - 3).",
+        choices: ["x² - x - 6", "x² + 6x - 5", "x² - 5x - 6", "x² - x + 6"],
+        answer: "x² - x - 6"
       },
       {
-        question: "7. 9 x 9 = ?",
-        choices: ["81", "72", "90", "99"],
-        answer: "81"
+        question: "7. Nyatakan pemboleh ubah bagi ungkapan 4x² - 7x + 2.",
+        choices: ["x", "2", "4", "x²"],
+        answer: "x"
       },
       {
-        question: "8. 72 ÷ 9 = ?",
-        choices: ["7", "8", "9", "6"],
-        answer: "8"
+        question: "8. Selesaikan sistem persamaan: x + y = 5 dan x - y = 1.",
+        choices: ["x = 3, y = 2", "x = 2, y = 3", "x = 4, y = 1", "x = 5, y = 0"],
+        answer: "x = 3, y = 2"
       },
       {
-        question: "9. 5 + 18 = ?",
-        choices: ["23", "24", "22", "25"],
-        answer: "23"
+        question: "9. Nyatakan bentuk umum persamaan kuadratik.",
+        choices: ["ax² + bx + c = 0", "ax + b = 0", "a + b = c", "abx + c = 0"],
+        answer: "ax² + bx + c = 0"
       },
       {
-        question: "10. 50 - 15 = ?",
-        choices: ["35", "34", "36", "33"],
-        answer: "35"
+        question: "10. Selesaikan: (x - 1)(x + 2) = 0.",
+        choices: ["x = 1 atau x = -2", "x = -1 atau x = 2", "x = -1 atau x = -2", "x = 1 atau x = 2"],
+        answer: "x = 1 atau x = -2"
       }
     ];
 
@@ -90,7 +90,7 @@
       q.choices.forEach(choice => {
         const btn = document.createElement("button");
         btn.textContent = choice;
-        btn.className = "w-full bg-gray-100 hover:bg-blue-200 px-4 py-2 rounded text-left";
+        btn.className = "w-full bg-gray-100 hover:bg-green-200 px-4 py-2 rounded text-left";
         btn.onclick = () => {
           if (choice === q.answer) {
             btn.classList.add("bg-green-300");
