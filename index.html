@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kuiz Matematik</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-blue-50 flex items-center justify-center min-h-screen">
+  <div class="bg-white shadow-xl rounded-xl p-6 w-full max-w-md">
+    <h1 class="text-xl font-bold mb-4 text-center">Kuiz Matematik</h1>
+    <div id="quiz-container">
+      <p id="question" class="text-lg font-medium mb-4"></p>
+      <div id="choices" class="space-y-2"></div>
+      <button id="next-btn" class="mt-6 w-full bg-blue-500 text-white py-2 px-4 rounded hidden">Soalan Seterusnya</button>
+    </div>
+    <div id="result" class="hidden text-center">
+      <h2 class="text-2xl font-bold mb-4">Selesai!</h2>
+      <p id="score" class="text-lg"></p>
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        question: "1. 12 + 7 = ?",
+        choices: ["17", "18", "19", "20"],
+        answer: "19"
+      },
+      {
+        question: "2. 45 - 18 = ?",
+        choices: ["28", "27", "26", "25"],
+        answer: "27"
+      },
+      {
+        question: "3. 6 x 7 = ?",
+        choices: ["42", "36", "48", "40"],
+        answer: "42"
+      },
+      {
+        question: "4. 56 ÷ 8 = ?",
+        choices: ["6", "7", "8", "9"],
+        answer: "7"
+      },
+      {
+        question: "5. 25 + 36 = ?",
+        choices: ["61", "60", "62", "63"],
+        answer: "61"
+      },
+      {
+        question: "6. 100 - 37 = ?",
+        choices: ["63", "64", "65", "66"],
+        answer: "63"
+      },
+      {
+        question: "7. 9 x 9 = ?",
+        choices: ["81", "72", "90", "99"],
+        answer: "81"
+      },
+      {
+        question: "8. 72 ÷ 9 = ?",
+        choices: ["7", "8", "9", "6"],
+        answer: "8"
+      },
+      {
+        question: "9. 5 + 18 = ?",
+        choices: ["23", "24", "22", "25"],
+        answer: "23"
+      },
+      {
+        question: "10. 50 - 15 = ?",
+        choices: ["35", "34", "36", "33"],
+        answer: "35"
+      }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    const questionEl = document.getElementById("question");
+    const choicesEl = document.getElementById("choices");
+    const nextBtn = document.getElementById("next-btn");
+    const resultEl = document.getElementById("result");
+    const scoreEl = document.getElementById("score");
+
+    function showQuestion() {
+      const q = questions[currentQuestion];
+      questionEl.textContent = q.question;
+      choicesEl.innerHTML = "";
+      q.choices.forEach(choice => {
+        const btn = document.createElement("button");
+        btn.textContent = choice;
+        btn.className = "w-full bg-gray-100 hover:bg-blue-200 px-4 py-2 rounded text-left";
+        btn.onclick = () => {
+          if (choice === q.answer) {
+            btn.classList.add("bg-green-300");
+            score++;
+          } else {
+            btn.classList.add("bg-red-300");
+          }
+          Array.from(choicesEl.children).forEach(c => c.disabled = true);
+          nextBtn.classList.remove("hidden");
+        };
+        choicesEl.appendChild(btn);
+      });
+    }
+
+    nextBtn.onclick = () => {
+      currentQuestion++;
+      if (currentQuestion < questions.length) {
+        showQuestion();
+        nextBtn.classList.add("hidden");
+      } else {
+        document.getElementById("quiz-container").classList.add("hidden");
+        resultEl.classList.remove("hidden");
+        scoreEl.textContent = `Skor anda: ${score} / ${questions.length}`;
+      }
+    };
+
+    showQuestion();
+  </script>
+</body>
+</html>
